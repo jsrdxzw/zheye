@@ -20,12 +20,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/create',
     name: 'create',
-    component: () => import('@/views/Create.vue')
+    component: () => import('@/views/CreatePost.vue')
   },
   {
     path: '/column/:id',
     name: 'column',
-    component: () => import('@/views/Column.vue')
+    component: () => import('@/views/ColumnDetail.vue')
   },
   {
     path: '/posts/:id',
