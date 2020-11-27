@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-dark bg-primary justify-content-between mb-4 px-4">
-  <router-link class="navbar-brand" to="/">知识专栏</router-link>
+  <router-link class="navbar-brand" to="/">知識楽園</router-link>
 </nav>
 </template>
 
