@@ -8,6 +8,31 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Login.vue')
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import('@/views/Signup.vue')
+  },
+  {
+    path: '/create',
+    name: 'create',
+    component: () => import('@/views/Create.vue')
+  },
+  {
+    path: '/column/:id',
+    name: 'column',
+    component: () => import('@/views/Column.vue')
+  },
+  {
+    path: '/posts/:id',
+    name: 'post',
+    component: () => import('@/views/PostDetail.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

@@ -5,7 +5,12 @@
   </div>
   <router-view/>
 </template>
-
+<script lang="ts">
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { defineComponent } from 'vue'
+export default defineComponent({
+})
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
