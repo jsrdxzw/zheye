@@ -1,14 +1,17 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container">
+    <global-header/>
+    <router-view/>
+    <global-footer/>
   </div>
-  <router-view/>
 </template>
 <script lang="ts">
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { defineComponent } from 'vue'
+import GlobalHeader from '@/components/GlobalHeader.vue'
+import GlobalFooter from '@/components/GlobalFooter.vue'
 export default defineComponent({
+  components: { GlobalFooter, GlobalHeader }
 })
 </script>
 <style lang="less">
