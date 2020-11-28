@@ -5,7 +5,7 @@
     <div class="mb-3">
       <label class="form-label">メールアドレス</label>
       <validate-input
-        placeholder="メールアドレスを入力してください"
+        placeholder="example@gmail.com"
         type="text"
         ref="inputRef"
       />
@@ -14,7 +14,7 @@
       <label class="form-label">パスワード</label>
       <validate-input
         type="password"
-        placeholder="パスワードを入力してください"
+        placeholder="パスワード"
       />
     </div>
     <template #submit>
