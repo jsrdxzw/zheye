@@ -9,6 +9,7 @@
         type="text"
         ref="inputRef"
         v-model="emailVal"
+        :rules="emailRules"
       />
     </div>
     <div class="mb-3">
@@ -16,6 +17,8 @@
       <validate-input
         type="password"
         placeholder="パスワード"
+        v-model="passwordVal"
+        :rules="passwordRules"
       />
     </div>
     <template #submit>
@@ -25,16 +28,24 @@
 </div>
 </template>
 
-<script>
-import ValidateForm from '@/components/ValidateForm'
-import ValidateInput from '@/components/ValidateInput'
+<script lang="ts">
+import ValidateForm from '@/components/ValidateForm.vue'
+import ValidateInput, { RulesProp } from '@/components/ValidateInput.vue'
 import { ref } from 'vue'
 export default {
   name: 'Login',
   components: { ValidateForm, ValidateInput },
   setup () {
     const emailVal = ref('')
-    return { emailVal }
+    const passwordVal = ref('')
+    const emailRules: RulesProp = [
+      { type: 'required', message: '电子邮箱地址不能为空' },
+      { type: 'email', message: '请输入正确的电子邮箱格式' }
+    ]
+    const passwordRules: RulesProp = [
+      { type: 'required', message: '密码不能为空' }
+    ]
+    return { emailVal, passwordVal, emailRules, passwordRules }
   }
 }
 </script>
