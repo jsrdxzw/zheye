@@ -1,7 +1,7 @@
 <template>
   <form class="validate-form-container">
     <slot name="default"></slot>
-    <div class="submit-area">
+    <div class="submit-area" @click.prevent="submitForm">
       <slot name="submit">
         <button class="btn btn-primary" type="submit">ログイン</button>
       </slot>
@@ -10,9 +10,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onUnmounted } from 'vue'
+import mitt from 'mitt'
+type ValidateFunc = () => boolean
+export const emitter = mitt()
 export default defineComponent({
-  name: 'ValidateForm'
+  name: 'ValidateForm',
+  emits: ['form-submit'],
+  setup (props, context) {
+    let funcArr: ValidateFunc[] = []
+    const submitForm = () => {
+      const result = funcArr.map(func => func()).every(res => res)
+      context.emit('form-submit', result)
+    }
+    const callback = (func?: ValidateFunc) => {
+      if (func) {
+        funcArr.push(func)
+      }
+    }
+    emitter.on('form-item-created', callback)
+    onUnmounted(() => {
+      emitter.off('form-item-created', callback)
+      funcArr = []
+    })
+    return { submitForm }
+  }
 })
 </script>
 
