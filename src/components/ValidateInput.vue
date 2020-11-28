@@ -3,10 +3,10 @@
   <input
     v-if="tag !== 'textarea'"
     :class="{'is-invalid': inputRef.error}"
-    @blur="validateInput"
     class="form-control"
-    v-model="inputRef.val"
     v-bind="$attrs"
+    @input="inputValueChange"
+    :value="inputRef.val"
   >
   <textarea v-else class="form-control"/>
 </div>
@@ -23,17 +23,20 @@ export default defineComponent({
       default: 'text'
     }
   },
+  emits: ['update:modelValue'],
   inheritAttrs: false,
-  setup () {
+  setup (props, context) {
     const inputRef = reactive({
       val: '',
       error: false,
       message: ''
     })
-    const validateInput = () => {
-      console.log('123')
+    const inputValueChange = (e: KeyboardEvent) => {
+      const targetValue = (e.target as HTMLInputElement).value
+      inputRef.val = targetValue
+      context.emit('update:modelValue', targetValue)
     }
-    return { inputRef, validateInput }
+    return { inputRef, inputValueChange }
   }
 })
 </script>

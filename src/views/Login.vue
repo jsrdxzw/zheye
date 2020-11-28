@@ -8,6 +8,7 @@
         placeholder="example@gmail.com"
         type="text"
         ref="inputRef"
+        v-model="emailVal"
       />
     </div>
     <div class="mb-3">
@@ -27,9 +28,14 @@
 <script>
 import ValidateForm from '@/components/ValidateForm'
 import ValidateInput from '@/components/ValidateInput'
+import { ref } from 'vue'
 export default {
   name: 'Login',
-  components: { ValidateForm, ValidateInput }
+  components: { ValidateForm, ValidateInput },
+  setup () {
+    const emailVal = ref('')
+    return { emailVal }
+  }
 }
 </script>
 
